@@ -37,7 +37,7 @@ module RGB(
         
     always @(posedge clk or posedge reset) begin
         if(reset) 
-            rgb <= 3'b000;
+            rgb <= 3'b010;       
         else begin
             d_temp <= desired_temp;
             t_in <= temp_in;
@@ -47,20 +47,22 @@ module RGB(
                 if((d_temp > t_in) && temp_s) 
                     rgb <= 3'b100; 
                  else if((d_temp < t_in) && temp_s)
-                rgb <= 3'b001; 
-            else if((d_temp == t_in) && temp_s)
-                rgb <= 3'b010;            
-            end else begin
-            if((temp_s == 0) && flag)
-               if(d_temp > t_in)
-                rgb <= 3'b100;
-               else if(d_temp < t_in)
-                rgb <= 3'b001;
-               else if(d_temp == t_in)
-                rgb <= 3'b010;
-                flag <= 1'b0;             
-       end 
-       end        
-       end     
+                    rgb <= 3'b001; 
+                 else if((d_temp == t_in) && temp_s)
+                    rgb <= 3'b010;            
+             end else begin
+                if((temp_s == 0) && flag) 
+                    if(d_temp > t_in)
+                        rgb <= 3'b100;
+                    else if(d_temp < t_in)
+                        rgb <= 3'b001;
+                    else if(d_temp == t_in) begin
+                        rgb <= 3'b010;
+                        flag <= 1'b0;    
+                end else if((temp_s == 0) && flag == 0)
+                    rgb <= 3'b010;
+            end 
+        end        
+      end     
        assign rgb_out = rgb;
 endmodule
