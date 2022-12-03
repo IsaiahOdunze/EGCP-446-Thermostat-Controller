@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
-// Created by David J. Marion
-// Date 7.19.2022
-// 7 Segment Control for the Nexys A7 Temperature Sensor
+
+// 7 Segment Control and conversion degrees to F for the Nexys A7 Temperature Sensor
+
 
 module seg7(
     input clk_100MHz,               // Nexys A7 clock
