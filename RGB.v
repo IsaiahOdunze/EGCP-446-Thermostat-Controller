@@ -30,8 +30,9 @@ module RGB(
     );
     //wire sclk;
     reg temp_s;
-    reg [7:0] d_temp;
-    reg [7:0] t_in;
+    reg flag;
+    reg [6:0] d_temp;
+    reg [6:0] t_in;
     reg [2:0] rgb;
         
     always @(posedge clk or posedge reset) begin
@@ -40,14 +41,26 @@ module RGB(
         else begin
             d_temp <= desired_temp;
             t_in <= temp_in;
-            temp_s <= temp_set;
-            if((d_temp > t_in) && temp_s) 
-                rgb <= 3'b100; 
-            else if((d_temp < t_in) && temp_s)
+            temp_s <= temp_set;           
+             if(temp_s) begin
+                flag <= 1'b1;
+                if((d_temp > t_in) && temp_s) 
+                    rgb <= 3'b100; 
+                 else if((d_temp < t_in) && temp_s)
                 rgb <= 3'b001; 
-            else
+            else if((d_temp == t_in) && temp_s)
+                rgb <= 3'b010;            
+            end else begin
+            if((temp_s == 0) && flag)
+               if(d_temp > t_in)
+                rgb <= 3'b100;
+               else if(d_temp < t_in)
+                rgb <= 3'b001;
+               else if(d_temp == t_in)
                 rgb <= 3'b010;
-       end
+                flag <= 1'b0;             
+       end 
+       end        
        end     
        assign rgb_out = rgb;
 endmodule
