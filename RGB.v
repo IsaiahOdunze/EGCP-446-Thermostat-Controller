@@ -24,14 +24,14 @@ module RGB(
     input clk,
     input reset,
     input temp_set,
-    input [6:0] desired_temp,
-    input [6:0] temp_in,
+    input [7:0] desired_temp,
+    input [7:0] temp_in,
     output [2:0] rgb_out
     );
     //wire sclk;
     reg temp_s;
-    reg [6:0] d_temp;
-    reg [6:0] t_in;
+    reg [7:0] d_temp;
+    reg [7:0] t_in;
     reg [2:0] rgb;
         
     always @(posedge clk or posedge reset) begin
