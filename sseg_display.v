@@ -8,7 +8,7 @@
 // Description: This module has 3 inputs and 2 outputs. It takes in a current temperature
 //              and a changed temperature and displays them across the separate anodes of
 //              the seven segment display.
-/
+//
 //////////////////////////////////////////////////////////////////////////////////
 
 module sseg_display(
