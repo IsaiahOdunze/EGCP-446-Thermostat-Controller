@@ -29,7 +29,7 @@ module Thermostat(
     reg [7:0] Current;    
     reg [7:0] tmp;
     reg [7:0] tmp2;
-    
+    reg flag;
    
     wire slowclock1;
     wire slowclock2;
@@ -40,7 +40,10 @@ module Thermostat(
     always @(posedge slowclock1 or posedge Reset)
     begin 
         if (Reset)
+        begin
             tmp = tmp2;  //temp change is set back to zero or original temp
+            flag = 0;
+        end
         else if (Up)            //if up button pressed temp will go up by 1
         begin 
             if (tmp == 8'b01100011)// stops from going over 99
@@ -68,21 +71,22 @@ module Thermostat(
                      //start to increment or decrement current temperature
             begin
                 DesiredTmp = tmp;
+                flag = 1;
             end
             
-            else if (tmp2 < DesiredTmp)//if current is less than desired it will increase
+            else if (tmp2 < DesiredTmp && flag == 1)//if current is less than desired it will increase
                 begin 
                 tmp2 = tmp2 + 1'b1;
                 end
-            else if (tmp2 > DesiredTmp)//if current greater than desired it will decrease
+            else if (tmp2 > DesiredTmp && flag == 1)//if current greater than desired it will decrease
                 begin
                 tmp2 = tmp2 - 1'b1;
                 end
-            else if (tmp2 == DesiredTmp)//if equal it will stay at that temperature
+            else if (tmp2 == DesiredTmp && flag == 1)//if equal it will stay at that temperature
                 begin
                 tmp2 = tmp2;
                 end
-            else
+            else if(Set == 0 && flag == 0)
              begin
              tmp2 = Temperature;        //these values are acting as the temp sensor value
              DesiredTmp = Temperature; 
