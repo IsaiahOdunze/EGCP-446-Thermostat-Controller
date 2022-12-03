@@ -21,6 +21,7 @@ module Thermostat(
     input Up,
     input Down,
     input clk,
+    input [7:0] Temperature,//reading from temp sensor
     output [7:0] CurrentTemp,
     output [7:0] ChangedTemp    
     );
@@ -83,8 +84,8 @@ module Thermostat(
                 end
             else
              begin
-             tmp2 = 8'b01000110;        //these values are acting as the temp sensor value
-             DesiredTmp = 8'b01000110; 
+             tmp2 = Temperature;        //these values are acting as the temp sensor value
+             DesiredTmp = Temperature; 
              end
         end
             
