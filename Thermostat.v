@@ -74,11 +74,11 @@ module Thermostat(
                 flag = 1;
             end
             
-            else if (tmp2 < DesiredTmp && flag == 1)//if current is less than desired it will increase
+            else if (tmp2 < DesiredTmp)//if current is less than desired it will increase
                 begin 
                 tmp2 = tmp2 + 1'b1;
                 end
-            else if (tmp2 > DesiredTmp && flag == 1)//if current greater than desired it will decrease
+            else if (tmp2 > DesiredTmp)//if current greater than desired it will decrease
                 begin
                 tmp2 = tmp2 - 1'b1;
                 end
@@ -86,7 +86,7 @@ module Thermostat(
                 begin
                 tmp2 = tmp2;
                 end
-            else if(Set == 0 && flag == 0)
+            else if (Set == 0 && flag == 0)
              begin
              tmp2 = Temperature;        //these values are acting as the temp sensor value
              DesiredTmp = Temperature; 
