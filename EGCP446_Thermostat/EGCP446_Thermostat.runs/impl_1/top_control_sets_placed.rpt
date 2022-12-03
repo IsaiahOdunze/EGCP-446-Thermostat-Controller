@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.2 (win64) Build 3367213 Tue Oct 19 02:48:09 MDT 2021
-| Date         : Sat Dec  3 12:45:15 2022
+| Date         : Sat Dec  3 14:13:06 2022
 | Host         : Connor-Laptop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
 | Design       : top
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    33 |
-|    Minimum number of control sets                        |    33 |
+| Total control sets                                       |    37 |
+|    Minimum number of control sets                        |    37 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |   187 |
+| Unused register locations in slices containing registers |   200 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,11 +39,11 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    33 |
-| >= 0 to < 4        |    23 |
+| Total control sets |    37 |
+| >= 0 to < 4        |    25 |
 | >= 4 to < 6        |     1 |
 | >= 6 to < 8        |     3 |
-| >= 8 to < 10       |     2 |
+| >= 8 to < 10       |     4 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
@@ -58,11 +58,11 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              38 |           18 |
+| No           | No                    | No                     |              22 |           13 |
 | No           | No                    | Yes                    |              91 |           29 |
-| No           | Yes                   | No                     |              30 |           13 |
-| Yes          | No                    | No                     |              18 |            7 |
-| Yes          | No                    | Yes                    |              12 |           10 |
+| No           | Yes                   | No                     |              31 |           14 |
+| Yes          | No                    | No                     |              40 |           15 |
+| Yes          | No                    | Yes                    |              16 |           12 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -73,38 +73,42 @@ Table of Contents
 +--------------------------------+----------------------------------------------+-------------------------------+------------------+----------------+--------------+
 |          Clock Signal          |                 Enable Signal                |        Set/Reset Signal       | Slice Load Count | Bel Load Count | Bels / Slice |
 +--------------------------------+----------------------------------------------+-------------------------------+------------------+----------------+--------------+
-|  thermo/CD1/slowclock1         |                                              | thermo/tmp_reg[4]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
-|  thermo/CD1/slowclock1         | thermo/tmp[6]_P_i_1_n_0                      | thermo/tmp_reg[0]_LDC_i_1_n_0 |                1 |              1 |         1.00 |
-|  thermo/CD1/slowclock1         | thermo/tmp[6]_P_i_1_n_0                      | thermo/tmp_reg[6]_LDC_i_1_n_0 |                1 |              1 |         1.00 |
-|  thermo/CD1/slowclock1         |                                              | thermo/tmp_reg[2]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
-|  thermo/CD1/slowclock1         | thermo/tmp[6]_P_i_1_n_0                      | thermo/tmp_reg[2]_LDC_i_1_n_0 |                1 |              1 |         1.00 |
-|  thermo/CD1/slowclock1         | thermo/tmp[6]_P_i_1_n_0                      | thermo/tmp_reg[3]_LDC_i_1_n_0 |                1 |              1 |         1.00 |
-|  thermo/CD1/slowclock1         | thermo/tmp[6]_P_i_1_n_0                      | thermo/tmp_reg[5]_LDC_i_1_n_0 |                1 |              1 |         1.00 |
-|  thermo/CD1/slowclock1         |                                              | Reset_IBUF                    |                1 |              1 |         1.00 |
-|  thermo/CD1/slowclock1         |                                              | thermo/tmp_reg[0]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
-|  thermo/CD1/slowclock1         |                                              | thermo/tmp_reg[3]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
-|  thermo/CD1/slowclock1         |                                              | thermo/tmp_reg[5]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
-|  thermo/CD1/slowclock1         |                                              | thermo/tmp_reg[6]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
-|  thermo/CD1/slowclock1         |                                              | thermo/tmp_reg[1]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
-|  thermo/CD1/slowclock1         | thermo/tmp[6]_P_i_1_n_0                      | thermo/tmp_reg[1]_LDC_i_1_n_0 |                1 |              1 |         1.00 |
-|  thermo/CD1/slowclock1         | thermo/tmp[6]_P_i_1_n_0                      | thermo/tmp_reg[4]_LDC_i_1_n_0 |                1 |              1 |         1.00 |
-|  thermo/tmp_reg[5]_LDC_i_1_n_0 |                                              | thermo/tmp_reg[5]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
-|  thermo/tmp_reg[3]_LDC_i_1_n_0 |                                              | thermo/tmp_reg[3]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
-|  thermo/tmp_reg[2]_LDC_i_1_n_0 |                                              | thermo/tmp_reg[2]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
-|  thermo/tmp_reg[6]_LDC_i_1_n_0 |                                              | thermo/tmp_reg[6]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
 |  thermo/tmp_reg[0]_LDC_i_1_n_0 |                                              | thermo/tmp_reg[0]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
-|  thermo/tmp_reg[1]_LDC_i_1_n_0 |                                              | thermo/tmp_reg[1]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
+|  thermo/tmp_reg[6]_LDC_i_1_n_0 |                                              | thermo/tmp_reg[6]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
+|  thermo/tmp_reg[7]_LDC_i_1_n_0 |                                              | thermo/tmp_reg[7]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
+|  thermo/tmp_reg[3]_LDC_i_1_n_0 |                                              | thermo/tmp_reg[3]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
 |  thermo/tmp_reg[4]_LDC_i_1_n_0 |                                              | thermo/tmp_reg[4]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
-|  clk_IBUF_BUFG                 | rgb/rgb[2]_i_1_n_0                           |                               |                2 |              3 |         1.50 |
-|  clk_200kHz__0_BUFG            | temp_get/FSM_sequential_state_reg[4]_i_1_n_0 | Reset_IBUF                    |                3 |              5 |         1.67 |
-|  thermo/E[0]                   |                                              |                               |                3 |              7 |         2.33 |
-|  thermo/CD2/slowclock2         | thermo/tmp2                                  |                               |                2 |              7 |         3.50 |
+|  thermo/tmp_reg[2]_LDC_i_1_n_0 |                                              | thermo/tmp_reg[2]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
+|  thermo/tmp_reg[5]_LDC_i_1_n_0 |                                              | thermo/tmp_reg[5]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
+|  thermo/tmp_reg[1]_LDC_i_1_n_0 |                                              | thermo/tmp_reg[1]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
+|  thermo/CD1/slowclock1         | thermo/tmp[7]_P_i_1_n_0                      | thermo/tmp_reg[1]_LDC_i_1_n_0 |                1 |              1 |         1.00 |
+|  thermo/CD1/slowclock1         |                                              | thermo/tmp_reg[3]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
+|  thermo/CD1/slowclock1         |                                              | thermo/tmp_reg[6]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
+|  thermo/CD1/slowclock1         |                                              | thermo/tmp_reg[7]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
+|  thermo/CD1/slowclock1         |                                              | thermo/tmp_reg[1]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
+|  thermo/CD1/slowclock1         |                                              | thermo/tmp_reg[4]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
+|  thermo/CD1/slowclock1         |                                              | thermo/tmp_reg[2]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
+|  thermo/CD1/slowclock1         |                                              | thermo/tmp_reg[5]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
+|  thermo/CD1/slowclock1         |                                              | thermo/tmp_reg[0]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
+|  thermo/CD1/slowclock1         | thermo/tmp[7]_P_i_1_n_0                      | thermo/tmp_reg[0]_LDC_i_1_n_0 |                1 |              1 |         1.00 |
+|  thermo/CD1/slowclock1         | thermo/tmp[7]_P_i_1_n_0                      | thermo/tmp_reg[6]_LDC_i_1_n_0 |                1 |              1 |         1.00 |
+|  thermo/CD1/slowclock1         | thermo/tmp[7]_P_i_1_n_0                      | thermo/tmp_reg[7]_LDC_i_1_n_0 |                1 |              1 |         1.00 |
+|  thermo/CD1/slowclock1         | thermo/tmp[7]_P_i_1_n_0                      | thermo/tmp_reg[3]_LDC_i_1_n_0 |                1 |              1 |         1.00 |
+|  thermo/CD1/slowclock1         | thermo/tmp[7]_P_i_1_n_0                      | thermo/tmp_reg[4]_LDC_i_1_n_0 |                1 |              1 |         1.00 |
+|  thermo/CD1/slowclock1         | thermo/tmp[7]_P_i_1_n_0                      | thermo/tmp_reg[2]_LDC_i_1_n_0 |                1 |              1 |         1.00 |
+|  thermo/CD1/slowclock1         | thermo/tmp[7]_P_i_1_n_0                      | thermo/tmp_reg[5]_LDC_i_1_n_0 |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG                 | rgb/rgb[2]_i_1_n_0                           | Reset_IBUF                    |                2 |              3 |         1.50 |
+|  clk_200kHz__0_BUFG            | temp_get/FSM_sequential_state_reg[4]_i_1_n_0 | Reset_IBUF                    |                2 |              5 |         2.50 |
+|  clk_IBUF_BUFG                 |                                              |                               |                4 |              6 |         1.50 |
+|  thermo/E[0]                   |                                              |                               |                5 |              7 |         1.40 |
 |  clk_IBUF_BUFG                 |                                              | clk_200kHz/clk_reg            |                2 |              7 |         3.50 |
-|  clk_200kHz__0_BUFG            | temp_get/temp_data_reg                       |                               |                3 |              8 |         2.67 |
-|  clk_200kHz__0_BUFG            |                                              |                               |                5 |              9 |         1.80 |
+|  thermo/CD2/CLK                | thermo/DesiredTmp[7]_i_1_n_0                 |                               |                4 |              8 |         2.00 |
+|  thermo/CD2/CLK                | thermo/tmp2                                  |                               |                4 |              8 |         2.00 |
+|  clk_200kHz__0_BUFG            | temp_get/temp_data_reg[7]_i_1_n_0            |                               |                2 |              8 |         4.00 |
+|  clk_200kHz__0_BUFG            |                                              |                               |                4 |              9 |         2.25 |
 |  clk_IBUF_BUFG                 |                                              | sseg/counter[16]_i_1_n_0      |                4 |             16 |         4.00 |
+|  clk_IBUF_BUFG                 | rgb/t_in[6]_i_1_n_0                          |                               |                5 |             16 |         3.20 |
 |  clk_200kHz__0_BUFG            |                                              | Reset_IBUF                    |                5 |             17 |         3.40 |
-|  clk_IBUF_BUFG                 |                                              |                               |               10 |             22 |         2.20 |
 |  clk_IBUF_BUFG                 |                                              | Reset_IBUF                    |               16 |             66 |         4.12 |
 +--------------------------------+----------------------------------------------+-------------------------------+------------------+----------------+--------------+
 

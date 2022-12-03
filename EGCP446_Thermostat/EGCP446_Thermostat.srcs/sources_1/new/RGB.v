@@ -36,9 +36,10 @@ module RGB(
     reg [2:0] rgb;
         
     always @(posedge clk or posedge reset) begin
-        if(reset) 
-            rgb <= 3'b000;
-        else begin
+        if(reset)
+            rgb <= 3'b010;
+        else 
+        begin
             d_temp <= desired_temp;
             t_in <= temp_in;
             temp_s <= temp_set;           

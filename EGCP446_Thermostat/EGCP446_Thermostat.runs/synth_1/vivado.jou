@@ -2,8 +2,8 @@
 # Vivado v2021.2 (64-bit)
 # SW Build 3367213 on Tue Oct 19 02:48:09 MDT 2021
 # IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
-# Start of session at: Sat Dec  3 12:44:11 2022
-# Process ID: 12772
+# Start of session at: Sat Dec  3 14:12:03 2022
+# Process ID: 3220
 # Current directory: C:/Users/conno/Desktop/EGCP446/EGCP446_Thermostat/EGCP446_Thermostat.runs/synth_1
 # Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
 # Log file: C:/Users/conno/Desktop/EGCP446/EGCP446_Thermostat/EGCP446_Thermostat.runs/synth_1/top.vds

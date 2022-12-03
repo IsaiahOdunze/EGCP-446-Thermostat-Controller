@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.2 (win64) Build 3367213 Tue Oct 19 02:48:09 MDT 2021
-| Date         : Sat Dec  3 12:45:48 2022
+| Date         : Sat Dec  3 14:13:28 2022
 | Host         : Connor-Laptop running 64-bit major release  (build 9200)
 | Command      : report_drc -file top_drc_routed.rpt -pb top_drc_routed.pb -rpx top_drc_routed.rpx
 | Design       : top
@@ -24,12 +24,12 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 9
+             Violations found: 10
 +----------+----------+-----------------------------------------------------+------------+
 | Rule     | Severity | Description                                         | Violations |
 +----------+----------+-----------------------------------------------------+------------+
 | CFGBVS-1 | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
-| PDRC-153 | Warning  | Gated clock check                                   | 8          |
+| PDRC-153 | Warning  | Gated clock check                                   | 9          |
 +----------+----------+-----------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -85,6 +85,11 @@ Related violations: <none>
 PDRC-153#8 Warning
 Gated clock check  
 Net thermo/tmp_reg[6]_LDC_i_1_n_0 is a gated clock net sourced by a combinational pin thermo/tmp_reg[6]_LDC_i_1/O, cell thermo/tmp_reg[6]_LDC_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#9 Warning
+Gated clock check  
+Net thermo/tmp_reg[7]_LDC_i_1_n_0 is a gated clock net sourced by a combinational pin thermo/tmp_reg[7]_LDC_i_1/O, cell thermo/tmp_reg[7]_LDC_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 

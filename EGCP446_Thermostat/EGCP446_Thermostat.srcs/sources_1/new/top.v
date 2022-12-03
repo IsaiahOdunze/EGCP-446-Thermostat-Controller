@@ -41,7 +41,7 @@ module top(
     clkgen_200kHz clk_200kHz(.clk_100MHz(clk), .clk_200kHz(clk_200kHz));
     i2c_master temp_get(.clk_200kHz(clk_200kHz), .reset(Reset), .SDA(SDA), .temp_data(ReadTemp), .SDA_dir(SDA_dir), .SCL(SCL));
     Thermostat thermo(.Reset(Reset), .Set(Set), .Up(Up), .Down(Down), .clk(clk), .Temperature(ReadTemp), .CurrentTemp(CurrentTemp), .ChangedTemp(ChangedTemp));
-    RGB rgb(.clk(clk), .reset(reset), .temp_set(Set), .desired_temp(ChangedTemp), .temp_in(CurrentTemp), .rgb_out(rgb_out));
+    RGB rgb(.clk(clk), .reset(Reset), .temp_set(Set), .desired_temp(ChangedTemp), .temp_in(CurrentTemp), .rgb_out(rgb_out));
     sseg_display sseg(.clk(clk), .CurrentTemp(CurrentTemp), .ChangedTemp(ChangedTemp), .sseg_out(sseg_out), .an_out(an_out));
     
 endmodule
