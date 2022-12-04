@@ -41,8 +41,8 @@ module Thermostat(
     begin 
         if (Reset)
         begin
-            tmp = tmp2;  //temp change is set back to zero or original temp
-            flag = 0;
+            tmp = Temperature;
+            //changed  temperature is set back to temp sensor reading
         end
         else if (Up)            //if up button pressed temp will go up by 1
         begin 
@@ -65,13 +65,17 @@ module Thermostat(
         end 
 
         
-        always @(posedge slowclock2)
+        always @(posedge slowclock2 or posedge Reset)
         begin 
-            if (Set) //if set pressed the desired temp will be assigned then 
+            if (Reset)
+            begin 
+                DesiredTmp = Temperature;//When Reset Current temperature set beack to temp sensor
+                tmp2 = Temperature;
+            end
+            else if(Set) //if set pressed the desired temp will be assigned then 
                      //start to increment or decrement current temperature
             begin
                 DesiredTmp = tmp;
-                flag = 1;
             end
             
             else if (tmp2 < DesiredTmp)//if current is less than desired it will increase
@@ -82,15 +86,10 @@ module Thermostat(
                 begin
                 tmp2 = tmp2 - 1'b1;
                 end
-            else if (tmp2 == DesiredTmp && flag == 1)//if equal it will stay at that temperature
+             else if (tmp2 == DesiredTmp)//if equal it will stay at that temperature
                 begin
                 tmp2 = tmp2;
                 end
-            else if (Set == 0 && flag == 0)
-             begin
-             tmp2 = Temperature;        //these values are acting as the temp sensor value
-             DesiredTmp = Temperature; 
-             end
         end
             
         assign CurrentTemp = tmp2;
