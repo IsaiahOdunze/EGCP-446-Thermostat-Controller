@@ -23,7 +23,8 @@ module Thermostat(
     input clk,
     input [7:0] Temperature,//reading from temp sensor
     output [7:0] CurrentTemp,
-    output [7:0] ChangedTemp    
+    output [7:0] ChangedTemp,
+    output [7:0] DesiredTemp    
     );
     reg [7:0] DesiredTmp;
     reg [7:0] Current;    
@@ -93,7 +94,8 @@ module Thermostat(
         end
             
         assign CurrentTemp = tmp2;
-        assign  ChangedTemp = tmp;
+        assign ChangedTemp = tmp;
+        assign DesiredTemp = DesiredTmp;
     
 endmodule
 /////////////////////////////////////////////////////////////////////////////
