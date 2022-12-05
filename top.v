@@ -27,6 +27,7 @@ module top(
     input Up,
     input Down,
     inout SDA,
+    input BTNC,
     output SCL,
     output [6:0] sseg_out,
     output [7:0] an_out,
@@ -39,8 +40,8 @@ module top(
     wire [7:0] ChangedTemp;
     wire [7:0] DesiredTemp;
     
-    clkgen_200kHz clk_200kHz(.clk_100MHz(clk), .clk_200kHz(clk_200kHz));
-    i2c_master temp_get(.clk_200kHz(clk_200kHz), .reset(Reset), .SDA(SDA), .temp_data(ReadTemp), .SDA_dir(SDA_dir), .SCL(SCL));
+    clkgen_200kHz clk_200kHz1(.clk_100MHz(clk), .clk_200kHz(clk_200kHz));
+    i2c_master temp_get(.clk_200kHz(clk_200kHz), .reset(BTNC), .SDA(SDA), .temp_data(ReadTemp), .SDA_dir(SDA_dir), .SCL(SCL));
     Thermostat thermo(.Reset(Reset), .Set(Set), .Up(Up), .Down(Down), .clk(clk), .Temperature(ReadTemp), .CurrentTemp(CurrentTemp), .ChangedTemp(ChangedTemp),.DesiredTemp(DesiredTemp));
     RGB rgb(.clk(clk), .reset(Reset), .temp_set(Set), .desired_temp(DesiredTemp), .temp_in(CurrentTemp), .rgb_out(rgb_out));
     sseg_display sseg(.clk(clk), .CurrentTemp(CurrentTemp), .ChangedTemp(ChangedTemp), .sseg_out(sseg_out), .an_out(an_out));

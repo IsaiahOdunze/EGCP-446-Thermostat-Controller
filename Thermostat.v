@@ -5,12 +5,13 @@
 // Create Date: 11/21/2022 11:49:55 PM
 // Module Name: Thermostat
 // Project Name: Thermostat Controller
-// Description: This module has 5 inputs and 2 outputs. This module acts as the 
+// Description: This module has 6 inputs and 3 outputs. This module acts as the 
 //              thermostat controller with Up/Down buttons to control the temperature
 //              wanted and Set to start temperature change. And a Reset button 
-//              to reset the temperature. Has two outputs one is the changed 
+//              to reset the temperature. Has three outputs one is the changed 
 //              temperature that is changed with up/down and the other output 
-//              is to simulate the current temperature changing once set.
+//              is to simulate the current temperature changing once set. Then the 
+//              other output is for the desired temperature
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -30,7 +31,6 @@ module Thermostat(
     reg [7:0] Current;    
     reg [7:0] tmp;
     reg [7:0] tmp2;
-    reg flag;
    
     wire slowclock1;
     wire slowclock2;

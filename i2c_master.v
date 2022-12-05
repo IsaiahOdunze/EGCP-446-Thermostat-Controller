@@ -258,6 +258,6 @@ module i2c_master(
     assign i_bit = SDA;
     // Outputted temperature data
     //assign temp_data = temp_data_reg;
-    assign temp_data = ((temp_data_reg + temp_data_reg + temp_data_reg + temp_data_reg + temp_data_reg + temp_data_reg + temp_data_reg + temp_data_reg + temp_data_reg) / 8'b0000_0101 ) + 8'b0010_0000; 
+    assign temp_data = ((temp_data_reg + temp_data_reg + temp_data_reg + temp_data_reg + temp_data_reg + temp_data_reg + temp_data_reg + temp_data_reg + temp_data_reg) / 8'b0000_0101 ) + 8'b0001_0110; 
  
 endmodule
