@@ -1,8 +1,6 @@
 `timescale 1ns / 1ps
-// Created by David J. Marion
-// Date 7.19.2022
+// https://www.youtube.com/watch?v=4W9MQa3jBm8
 // I2C Master for the Nexys A7 Temperature Sensor
-// Edited 7.20.22 - for possible reset fix(not tested), and timing correction for state 0A
 
 module i2c_master(
     input clk_200kHz,               // i_clk
